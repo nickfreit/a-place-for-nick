@@ -1,0 +1,38 @@
+<%= form_with model: @journal, local: true do |form| %>
+ 
+  <% if @journal.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@journal.errors.count, "error") %> prohibited
+        this journal from being saved:
+      </h2>
+      <ul>
+        <% @journal.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <div class="container">
+    <p>
+      <%= form.label :title %><br>
+      <%= form.text_field :title, class: 'titleBox'%>
+    </p>
+  </div>
+ 
+  <div class="container">
+    <p>
+      <%= form.label :text %><br>
+      <%= form.text_area :text, class: 'textBox'%>
+    </p>
+  </div>
+ 
+  <div class="container">
+    <p>
+      <%= form.submit class: 'btn btn-large btn-primary'%>
+    </p>
+  </div>
+
+ 
+<% end %>
